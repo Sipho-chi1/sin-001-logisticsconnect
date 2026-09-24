@@ -9,6 +9,7 @@ public class TransitServiceApp {
 
         app.get("/health", ctx -> ctx.result("OK"));
 
+
         // TODO (Calculates estimated arrival windows based on hub and delay stage.)
         // Add domain endpoints for transit-service here.
     }
