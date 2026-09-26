@@ -20,11 +20,25 @@ public class HubServiceApp {
 
         app.get("/health", ctx -> ctx.result("OK"));
 
+        app.get("/hubs/{hubId}", HubServiceApp::getHubById);
 
 
         app.get("/hubs", HubServiceApp::hubs);
 
         fetchHubsFromIngestion();
+    }
+
+    private static void getHubById(Context ctx) {
+        String id = ctx.pathParam("hubId");
+
+        for (Hub hub : cachedHubs) {
+            if (hub.getHub_id().equals(id)) {
+                ctx.json(hub);
+                return;
+            }
+        }
+
+        ctx.status(404).result("Hub not found: " + id);
     }
 
 

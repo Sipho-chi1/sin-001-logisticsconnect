@@ -57,7 +57,7 @@ public class Hub {
                 continue;
             }
             hublines.add(new Hub(
-                    line.get(0).trim(),
+                    capitalize(line.get(0)).trim(),
                     resolveProvince(line.get(1)),
                     capitalize(line.get(2)).trim(),
                     checkActivation(line.get(3))
